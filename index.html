@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   
+
+    <title>Admin Panel</title>
+    <style>
+        .sidebar{
+            height: 100%;
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 10;
+            left: 0;
+            background-color: grey;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+        .sidebar a{
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            color: red;
+            display: block;
+        }
+        .main{
+            margin-left: 160px;
+            font-size: 28px;
+            padding: 0px 10px;
+        }
+        @media  screen and (max-height:450px) {
+            .sidebar{padding-top: 15px;}
+            .sidebar a{font-size: 18px;}
+            
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8NDxUPDw8QDw8PEA8PDxUVDxUPDw8PFRUWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx80OTQtOCgtLisBCgoKDg0OGhAQGjAmICYwMC0wKystLy0tLTMzLisrOC0rLSsvLS0rLSsuMy8tKy0tLS0tLSsrKy0tLS0tKy0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAgIDAQAAAAAAAAAAAAAAAQYFBwMECAL/xABMEAACAQMBAwgFBwcHDQAAAAAAAQIDBBEFBhIhBxMiMUFRYXEyQnKBkRQjUqHB0fAVFmKCorHSCDNTc5KTwhckQ1RVZIOUssPh4vH/xAAaAQEAAgMBAAAAAAAAAAAAAAAABAYCAwUB/8QAMxEAAgEDAgQDBgUFAQAAAAAAAAECAwQREiExQWFxBVGBFCKRocHwBhMysdEVYoKS0lL/2gAMAwEAAhEDEQA/ANNgAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgkAAAAAAgAEoAAAAAAAAAJgAAAAAAAAAAAIAAAAAAAAAAAEEgAgkAAAAAAAAmOO3hw8+JCAAAAAAAAIJAAAAAAAABBIADAAABBIAAAAAAAAABBIABBIAAAABBIQAAAAAAAAAAAJWMduezux3EAAAkAEHZoWU5qDWIqvU5qDk92G/mKbk+xdJcfBl7XIvrPdaf8w/4AeuLXH7ysr4rc12DYy5FdY77Rf8eX8B9/5E9X+lZ/30/wCAHhrYGy3yJatj+cs893Oz4/sGD1nkz1mzjvztHVgllujJV8L2V0vqAKgBJNNpppptNNYafamuxgAAAAAAADAAAAAABO94L4AAgAAAAAAALiAAAAAAASTSpuclCPXJpL3kGf2UtMyddrhHoU/P1n8P3mFSeiLkSrK1d1XjSXPj0XP+F1ZlLzTIzt+YS4wi1D20/t+03NyP7UflPToxqPNzaYt6+fSkkuhN+aXxTNUGDutSu9KuHWsripQ+Ux6bi10mnxTTTXXx97ItrU3cWWL8Q2S0RrwWNOIvty+D29V5Hq4Hk2pt9rMuvUrr3TUf3I43txq/+07z++ZNKmetgeSobc6xF5Wp3mfGs5L4PgXjYzlkuaM40tTxcUJNRdZRUa1L9KSXCce/gn5gGxdv+Tu11iDqRjGhepfN1ksb7+jVS9KPj1o816rp9azrzt68HTrUZOE4vsfen2prDT7U0ex6NWNSKnCSlCSUotPKlFrKafcaf/lBbNxlSp6nTjidOUbe4x61OX83J+UuH6wBo8AAAAAAAAAAAH1vr6K+sHyAAAAAAAAAAAAAASQQAfcIObUY8ZSax7y+WluqNONNepF/+0viV/ZWz3pus1whwh7b62WXuz1dbIF1PL0+Rcfw9Z6KTry4y2XZfy/kkwdPV7P5RRcF6a6UfaRhbHWM3jm383VxSX6MV6L/AB3ln6vcapQlSks8eP32Olb3NG/ozS/TlxfbzXdbry7o12gZXaKz5qtvJdGr0l5+svx3oxR0oyUkmihXFCVCrKlPinjv19VuujAAMjSekOQrVZXOkqnN5dpWnbr+rwpwXuUse4sXKJZK40i8pv8A1WrNeEoLfT+MUVPkAsZUtLnVkmlc3NSpDxhGMYZXhmLLht3cKlpV3POMWlfsz1wa6srvAPJCZJEVwwSAAAAQfTxjx/eQAATGTXFeP18CAARgAAEgAAAAAAAANAAAkRg5NRXFtpLzYcspLu+/Jm9lrPfqOs10afRj7b+5fvRhUnoi5Em0tpXNaNKPP5Li36LOOuCw2VsqNONNerw9qXrMx+0l7zVHm0+nV4LwivSf2e4y66/PgUfV7z5RVlL1ViNP2VwINCGueWXDxi5Vrafl09nL3V0WN/gsJeTaOm0XfSLz5RRU36cejL2kUgy2zl5zVXcb6NVbr8J+q/x3kq4hqh2K74Jd+z3Ki/0z2f0fx26ZZntbs+fouK9KPzkPP6Pw+wpkIOXVFvyTf7jYfV7jh2P1ZaJrEKssK0uvmquVwjGbWX+rLdflk02s+MfU6f4is9o3MV/bL6P6PvEosbeo+qnUb8Kcn9hdNjeTHUNSqRdWlUtLTK5ydSLhUlHPFU4S4t+LWF49R6bjjHDq7O4+iaVU6um2NO1owoUYqFKjCNOnFdkYrCNa8vmvqhYxsYyXO3k05rtVCm1Jt+clFfEue1+1tpo9B1biac2nzVJNc7Wl3RXd3vqR5f2m16vql3O7uH06jSUV6NOmvRhHwX18X2gGLAAAAAAADWPfxAAAAIBIAAIJAAAAAAABJBIASbeFxbeF4svdhaqhSjTXq8Z+M36RXtmLPfqc6/RpdXtv/wAFpxl47yDdTy1Et/4ds9MHcS4y2XZcX/k/2MTtHec1R3E+nV6HlD1n+O8qB39ZvflFaUo8YrEKfku38d50iTQp6IdTheLXntNy5J+6tl6c/V/LHkQMZJIRtOZs9i86Vd/KKMJ+t6M/bj+PrOHXrLnqDSWZQ6cPP1l8PsMHs1eblXm2+jVW75S9X8eKLanj3HNqR/Lqbd19/Iv1jWj4hZYqbvGmXfz78JLyfY7mh8tV1aWtO3naU7iVGmqfOyryjKajwi5R3XxxhdfHB19W5aNVrpxoxt7VNYzCDqVF5Sm8L4FH1yy5is0vQn04+/0kY86MZKSTRRq1KVGpKnPinh/z2fFHPfXta5qOtXqzrVZelOcnOb976l4dRwANY/HaemsAAAAAAAB+AAAAAAwAAAAAAAAAACQuvC4t4S8WyMnc0qvTpVVUqJtQ4xS63PxZ43hZxkzpQU5qLeE+b5dfviW3TLNW9KNPtS3p+M+37jszimmn6MlhmH/OS3+jV+r7h+clv9Gr9X3HNdKq3nDL7DxCwhBQjUjhLCXTGDu/kq3/AKGPxY/JVv8A0Mfizp/nHb/Rq/V9xH5yW/0av7P3Huit1NftXhfnT/1X/J3fyVb/ANDH4swu0emxpqNSnFRh6E0nwT7H7zu/nJb/AEav1fccd3rdvWg6co1cSW72cJd5nTVWMk2mRb2fhtahKEZwT5NJLdbrgvR9MlZ49a4NcV4MvOmXfyilGp2tYn4Tj+MlGMpoepq3clPLhLjweGpEi4pucduKOL4LfK2r4m8RksPo+Kf7r1M7r9nztBtLM6fTj3tetH4fuKeWpbSUFx3avD2fuK1dODm3TzzbeY5WGl3GNupRTjJG7xydtVnGtRmm+DS6cH9H2icIJBJOCQCQAQCQAQCSAACZSb4sgAAAAAAAAGd2I2elq1/StFlQnLfrtepbw4zfm10V4yQBtPko5N7Kvp8bvULaNapdS5yipSlHm6C4QwotcZcZeTj3Gq9u9IVhqd1a047sKdaXMxWXu06iVSnFZ4vEZpe49OX9hcu5s/k/NQs7Z1ncR3pRqPNF06KpxSw4rellNrs7jVHK1om/tFYyUcxvpWkJeMqdZRn+xKHwALldbCbO2NvCpe21tRWIU5VKlWcIyq7ve5Yy8NmB225M9Lq6dUvtMSpSpUJ3MHTqyq0LinCLlJYbfFpPDj2n1/KMvFGztaOcc5czq+6nTa/7iMncr5Bse4yW63pai11YncRSa881QDpcnHJ5pl1pFvXu7SFWvXhUqSm5TUsSnLc6pY4R3fga32F2HqX2rSsqybo2NWfy18UnGnNxUE+xza+G8+w9BbOxjY6fZ0J8MUbW3X9Zza+1P4nNb2drZ1pyhFRrajcb0++pUjS4+SUacn5t9rANXcpGxmmW1fTba1tIUZ3t/CnVcZTblQTipxeZdXTXwHKPsbplrcabbWtnClK91CnTq7sptyoJxU4vMurp59xntrH8o2o0uh1q3oXV1L9HMZ7rf61KJO1X+cbU6ZQ61bW9zdS/R3lNRf8AapRAMXyo8m1jR0ypc6fbRoVrZqtPdcnzlBZVRNSb6k979Q6mzuxmmx2c+X3NpCpcq0urnfbmnn5yVLgpY4LcRtP8o06t5VsJqLcbShXcXx34VZ1qc1juXNxz7aKjyiUVpmzVS2g+FOhb2ke9pzhDPwywDztptHnK0IS4qU4xl4rrZaa9hZU8b8KMM9W9Occ/tGC2bp711F/QjVfxi19pYNR0incyjKbqdGO7iO7hrOWQ688TSbaWORaPB7Zys5zjSjOTlhaksY25vOOfBGJ1/SadGHPUlhKSjNZcks+i14HY0PSKbpb9WCk6j3o5k4qMFlLq7+v4HNqlSFzKFpTalvT36zS4Qpx7M9rMjXpzdSnu7ipU3U3uLTXQ3YKK8Mmt1JaFFvf6E2nYW7u51oQTitMcLdanjU/LEY4z1zzRS9Voc1WqQS6Kk3D2ZcYr4NFmutCpOlKMKajUUUovMsucX/i+0x+v2+bul3VVBPzUt1/VulgnXUasYP8A0iqyj5w3P8Ll/ZM6tSWmGPLP38DTYWFFVrmNWKa1KK2W2c4x5PEopY54MHs1p9KtS36tNTfObqy5Rwkl3eOSdAsKNalKc6Sk3Vah0pLEFjufmZSUeYo1Guznq0fOWWvrOvom7Ss4Sn6PNzqT8t6T/cYSqOSk0+LWPmSKNlSp1KNKcYvTCTk3FbvMUs/F+Zxqhp3+7/3s/wCI49H0+hWdSTpRlB13Clxmlzaw1jpeR8VbrTt2W6qTluS3Pmai6eOHYdnQvmrLef0atT/q/hEtag3l+uepjQ9mrXMYqNKSUZSehRfkt9ura7JlVrY3pbqxHelu+CzwOM+YSPs6GMFJU9fvEAAHoAAAAAANo8j+02k6PTrVbutON3XkoJKhUqKnbx4pb0Y4zKTbflE1cADYcOVjUZaiq0rmcLF3cZyo83Te7ac4swzu7ze549ZcNpNv9Eu7ywuVWm/kVzVnNu2qrFKdGfFZjx+chS4eOexmjAAejLzlP2cruLrPnpU8uG/Yzm4N4zuuUOHUvga/5SuUyGsRjZW8J0bLnKcq85r52qoy6lCOcRXpdeW0urHHWYANz8o/KdZ17ahHTKspV6F5b3HSo1KcVCkpSWd5LK3txY7smO2U5UXW1ON3q9SFOlQta9KgqNGo489UnTbbinJ5cYvj4I1T+GADcVvyg6a9oqmpVKs1aRsFbUJczUcpVN6En0EspcanFi25QNNe0dXUalWatY2MbW3lzFRylNuEpdFLMcN1FxRp0AGzdS5Q6S2khqdCU5WcYUrap0JRlO3cfnOi1noyk5Jdrgu8yXK5yg2GqWEbayqznN3NOpVUqM6a5qMZvrkl624agABk9AvKdCpOdSTjmnurEXLpNpvq8jh1m4hXryqQWYtQUcrHVFZ4eeTpkGCglLXzJU7ucraNs8aU89c79cc/JcjN7PXlvbRk5yanNqLxGT3YLx7f/hxLXKzq7znilvqTjux6MM9Wd3OMGKB46UXJye+TbHxKvGlClB6VHf3crPP3t9+3D5Yst5q1rUqUp77+ZqVH6D4QlF/aonU1nVozq0p0m5czvPjFw4uS4cfBGFBjGjFNM21/F7irGUWorU020mnlacPdtbaVyLLqmt0KlCpCnJ85OKjGLi11yW9x9nJyW+r2saUKUpp4pxhJOk2nw49hVgY+zQxjc2/126/MdTEctY4PGMt8NXF536JLBZLvU7J05qChzkoSUPmcYm1w444HJZazbU6MKcp8YwhGa3JP2vMq4PfZ4YxuP67cqevTDOMfpff/ANFkv9WtJ0pxp435R3Y/NbvW+/BWwQZ06agsIhXl9Vu5KVTGyxssdebYBBJsIYAAAAAABLZAACf1gAAZ7wAAAAAAAAAAAMgAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBIAAAAAAAAAAABv3AAAAAAAAAAAAAAAAAAAAAAAAAAABr3gAE73DGF15z2+XkQAAAAAAAAAAAAAAAAT2e77SAAB9wAAAAABAABLIAAJAAAAAAJf3AAEAAAAAAgkAAAAA//2Q==" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      ADMIN PANEL
+    </a>
+  </div>
+</nav>
+<div class="sidebar">
+    <a href="#home">Home</a>
+    <a href="#jobs">Jobs</a>
+
+</div>
+<div class="main">
+<form method="POST">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Company Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Company Name" name="COMPANY NAME">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Job Position</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Job Position" name="JOB POSITION">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Skills Required</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Skills Required" name="SKILLS">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">CTC</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="ctc" name="CTC">
+  </div>
+  
+  <button type="submit" class="btn btn-primary" name="jobs">Submit</button>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Sr.No.</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Position</th>
+      <th scope="col">Skills</th>
+      <th scope="col">CTC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Apple</td>
+      <td>Software Developer</td>
+      <td>C,C++,JAVA,OOPS,PYTHON</td>
+      <td>20 LPA</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Google</td>
+      <td>Web Developer</td>
+      <td>HTML,CSS,TAILWIND CSS,PHP</td>
+      <td>15 LPA</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Nvidea</td>
+      <td>Game Developer</td>
+      <td>UI/UX,GRAPHICS,EDITING</td>
+      <td>12 LPA</td>
+
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+   
+      
+    
+</body>
+</html>
